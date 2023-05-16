@@ -8,6 +8,7 @@ Idol Showdown locally with different button layouts.
 - Install [ViGEmBus](https://vigem.org/projects/ViGEm/How-to-Install/)
 
 ## HOW TO USE
+- download latest inputs.zip from [releases](https://github.com/siemenskyle/idolinputs/releases)
 - config will reset when controllers are added or removed
 - `r` key will reset the config
 - follow the prompts
