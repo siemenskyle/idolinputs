@@ -12,3 +12,8 @@ Idol Showdown locally with different button layouts.
 - `r` key will reset the config
 - follow the prompts
 - you cant use analog sticks
+
+## DISCLAIMER
+- My python code sucks. I know. I'm a Go developer. I'm not sorry.
+- Use at your own risk, I warned you this is jank.
+- I'm not responsible for you dropping your combo.
