@@ -4,6 +4,7 @@ import pygame
 import os
 import vgamepad
 from enum import Enum
+from sys import exit
 import keyboard
 
 os.environ["SDL_JOYSTICK_ALLOW_BACKGROUND_EVENTS"] = "1"
@@ -99,7 +100,7 @@ def universalInterrupts(event):
     global DBG
     if event.type == pygame.QUIT:
         pygame.quit()
-        exit(0)
+        exit()
 
     if event.type == pygame.JOYDEVICEADDED:
         #print(f"Joystick {event.instance_id} connected")
@@ -118,7 +119,7 @@ def universalInterrupts(event):
     if keyboard.is_pressed("d"):
         print("Debug")
         DBG = not DBG
-        time.sleep(1)
+        time.sleep(0.5)
 
     return ""
 
@@ -139,7 +140,6 @@ def padSetup(player, screen, reason, text_print):
         text_print.reset()
         text_print.tprint(screen, reason)
         text_print.tprint(screen, f"Push any button to select controller for P{player}")
-        text_print.tprint(screen, f"{JOYSTICKS}")
         for event in getEvents():
             interrupted = universalInterrupts(event)
             if interrupted != "":
@@ -163,7 +163,7 @@ def padSetup(player, screen, reason, text_print):
         ]:
             mappings[button] = (INPUT_TYPES.HAT, button)
             continue
-
+        time.sleep(0.2)
         waiting = True
         while waiting:
             text_print.reset()
