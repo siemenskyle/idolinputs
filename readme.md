@@ -6,6 +6,7 @@ Idol Showdown locally with different button layouts.
 ## PREREQUISITES
 
 - Install [ViGEmBus](https://vigem.org/projects/ViGEm/How-to-Install/)
+- Set the buttons in Idol Showdown to default
 
 ## HOW TO USE
 - download latest inputs.zip from [releases](https://github.com/siemenskyle/idolinputs/releases)
