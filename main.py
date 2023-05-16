@@ -1,3 +1,5 @@
+import time
+
 import pygame
 import os
 import vgamepad
@@ -70,7 +72,6 @@ BUTTON_NAMES = {
 
 AXIS_THRESHOLD = 0.5
 
-
 def hatDirectionPressed(hat, direction):
     match direction:
         case IS_BUTTON.UP:
@@ -92,8 +93,10 @@ def triggerThresholdMet(axis, threshold):
 
 
 JOYSTICKS = {}
+DBG = False
 
 def universalInterrupts(event):
+    global DBG
     if event.type == pygame.QUIT:
         pygame.quit()
         exit(0)
@@ -111,6 +114,11 @@ def universalInterrupts(event):
     if keyboard.is_pressed("r"):
         print("Reset button")
         return "Config Reset"
+
+    if keyboard.is_pressed("d"):
+        print("Debug")
+        DBG = not DBG
+        time.sleep(1)
 
     return ""
 
@@ -195,18 +203,23 @@ def padSetup(player, screen, reason, text_print):
     return mappings, joyIndex
 
 def initializer():
+    global JOYSTICKS
     for i in range(pygame.joystick.get_count()):
         joy = pygame.joystick.Joystick(i)
         JOYSTICKS[joy.get_instance_id()] = joy
         print(f"Joystick {i} connected")
 
 def updateVController(state, joy_id, screen, text_print, vJoy):
+    global DBG
     if joy_id < 0:
         return
     joy = pygame.joystick.Joystick(joy_id)
-    for button in IS_BUTTON:
-        isPressed = resolveButton(state[button], joy)
-        text_print.tprint(screen, f"{BUTTON_NAMES[button]} : {isPressed}")
+    if DBG:
+        for button in IS_BUTTON:
+            isPressed = resolveButton(state[button], joy)
+            text_print.tprint(screen, f"{BUTTON_NAMES[button]} : {isPressed}")
+    else:
+        text_print.tprint(screen, f"Ready")
 
     if resolveButton(state[IS_BUTTON.UP], joy):
         vJoy.press_button(vgamepad.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_UP)

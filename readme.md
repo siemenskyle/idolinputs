@@ -13,6 +13,7 @@ Idol Showdown locally with different button layouts.
 - `r` key will reset the config
 - follow the prompts
 - you cant use analog sticks
+- `d` key will toggle debug view when controllers are ready
 
 ## DISCLAIMER
 - My python code sucks. I know. I'm a Go developer. I'm not sorry.
