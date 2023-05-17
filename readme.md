@@ -6,6 +6,7 @@ Idol Showdown locally with different button layouts.
 ## PREREQUISITES
 
 - Install [ViGEmBus](https://vigem.org/projects/ViGEm/How-to-Install/)
+- you may also need to use [HidHide](https://vigem.org/projects/HidHide/Simple-Setup-Guide/) to hide all controllers except the virtual ones
 - Set the buttons in Idol Showdown to default
 
 ## HOW TO USE
